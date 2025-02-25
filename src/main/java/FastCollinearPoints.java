@@ -23,7 +23,7 @@ public class FastCollinearPoints {
 
             double slopeCheck = mainPoint.slopeTo(toBeSorted[0]);
             int count = 0;
-            for (int j = 1; j < toBeSorted.length; j++) {
+            for (int j = i + 1; j < toBeSorted.length; j++) {
                 double slope = mainPoint.slopeTo(toBeSorted[j]);
                 if (slope == slopeCheck) {
                     count++;
@@ -34,12 +34,12 @@ public class FastCollinearPoints {
                         count = 0;
                     }
                 }
-                //deals with edge case of a collinear segment being on the end of the for loop
-                if (count >= 2) {
-                    numberOfSegmentsHolder++;
-                    count = 0;
-                }
                 slopeCheck = slope;
+            }
+            //deals with edge case of a collinear segment being on the end of the for loop
+            if (count >= 2) {
+                numberOfSegmentsHolder++;
+                count = 0;
             }
         }
     }
